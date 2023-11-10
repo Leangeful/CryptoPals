@@ -15,7 +15,7 @@
 </script>
 
 <div class="container h-full mx-auto flex flex-col mt-10 items-center space-y-4">
-	<h1 class="h1">Set 1 Challenge 1</h1>
+	<h1 class="h1">Set 1 Challenge 2</h1>
 
 	<div class="card w-4/6 space-y-4 p-6">
 		<p>Plain String</p>

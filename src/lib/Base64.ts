@@ -4,7 +4,7 @@ const alphabet = [
 	89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
 	115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47
 ];
-const pad = 61;
+const padChar = 61;
 const mask = 63;
 
 export const Base64 = {
@@ -13,7 +13,7 @@ export const Base64 = {
 		const arr = new Uint8Array(inArr.length + (rest ? 3 - rest : 0));
 		arr.set(inArr);
 
-		const padding = rest ? (rest == 2 ? [pad] : [pad, pad]) : [];
+		const padding = rest ? (rest == 2 ? [padChar] : [padChar, padChar]) : [];
 
 		const result = new Uint8Array((arr.length / 3) * 4);
 
