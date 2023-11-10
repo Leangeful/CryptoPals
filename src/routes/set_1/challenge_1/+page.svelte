@@ -7,19 +7,23 @@
 	import DataInput from '$lib/components/DataInput.svelte';
 
 	const chalStr = challenges.set_1.challenge_1.inStr;
-	const hexStr = challenges.set_1.challenge_1.inStrHex;
-	const byteArr = Util.hexStrToByteArray(hexStr);
-	const cipherArr = Base64.encode(byteArr);
-
 	let value = chalStr;
+
+	$: hexStr = Util.strToHexStr(value);
+	$: byteArr = Util.hexStrToByteArray(hexStr);
+	$: cipherArr = Base64.encode(byteArr);
+
+	/* function onReset() {
+		value = chalStr;
+	} */
 </script>
 
 <div class="container h-full mx-auto flex flex-col mt-10 items-center space-y-4">
 	<h1 class="h1">Set 1 Challenge 1</h1>
 
-	<div class="card space-y-4 p-6">
+	<div class="card w-4/6 space-y-4 p-6">
 		<p>Plain String</p>
-		<DataInput bind:value />
+		<DataInput bind:value on:reset={() => (value = chalStr)} />
 
 		<p>Hex String</p>
 		<Data>{hexStr}</Data>

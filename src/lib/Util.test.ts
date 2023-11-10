@@ -13,6 +13,10 @@ const testData = {
 };
 
 describe('Util.ts', () => {
+	test('strToHexStr', () => {
+		expect(Util.strToHexStr(testData.str)).toStrictEqual(testData.hexStr);
+	});
+
 	test('hexStrToByteArray', () => {
 		expect(Util.hexStrToByteArray(testData.hexStr)).toStrictEqual(testData.bytes);
 	});

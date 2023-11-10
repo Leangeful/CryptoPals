@@ -1,4 +1,10 @@
 export const Util = {
+	strToHexStr(str: string): string {
+		let res = '';
+		for (let i = 0; i < str.length; i++) res += str.charCodeAt(i).toString(16);
+		return res;
+	},
+
 	hexStrToByteArray(hexStr: string): Uint8Array {
 		const len = hexStr.length / 2;
 		const result = new Uint8Array(len);
