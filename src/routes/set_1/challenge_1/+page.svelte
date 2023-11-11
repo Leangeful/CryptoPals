@@ -14,23 +14,30 @@
 	$: cipherArr = Base64.encode(byteArr);
 </script>
 
-<div class="container h-full mx-auto flex flex-col mt-10 items-center space-y-4">
-	<h1 class="h1">Set 1 Challenge 1</h1>
+<h1 class="h1">Set 1 Challenge 1</h1>
 
-	<div class="card w-4/6 space-y-4 p-6">
-		<p>Plain String</p>
-		<DataInput bind:value on:reset={() => (value = chalStr)} />
+<div class="w-4/6 space-y-4 p-6">
+	<DataInput bind:value on:reset={() => (value = chalStr)}>
+		<span slot="head">Plain String</span>
+	</DataInput>
 
-		<p>Hex String</p>
-		<Data>{hexStr}</Data>
+	<Data>
+		<span slot="head">Hex String</span>
+		<span slot="content">{hexStr} </span>
+	</Data>
 
-		<p>Convert to byte array</p>
-		<Data>{Util.prettyPrintArr(byteArr)}</Data>
+	<Data>
+		<span slot="head">Convert to byte array</span>
+		<span slot="content">{Util.prettyPrintArr(byteArr)}</span>
+	</Data>
 
-		<p>Encode Base64</p>
-		<Data>{Util.prettyPrintArr(cipherArr)}</Data>
+	<Data>
+		<span slot="head">Encode Base64</span>
+		<span slot="content">{Util.prettyPrintArr(cipherArr)}</span>
+	</Data>
 
-		<p>Print string</p>
-		<Data>{Util.byteArrayToString(cipherArr)}</Data>
-	</div>
+	<Data>
+		<span slot="head">Print string</span>
+		<span slot="content">{Util.byteArrayToString(cipherArr)}</span>
+	</Data>
 </div>

@@ -6,5 +6,7 @@
 
 <AppShell slotSidebarLeft="bg-surface-500/5 w-56 p-4">
 	<svelte:fragment slot="sidebarLeft"><Navigation /></svelte:fragment>
-	<slot />
+	<div class="container mx-auto h-full flex flex-col items-center space-y-4 pt-4">
+		<slot />
+	</div>
 </AppShell>
