@@ -24,4 +24,8 @@ describe('Util.ts', () => {
 	test('byteArrayToString', () => {
 		expect(Util.byteArrayToString(testData.bytes)).toStrictEqual(testData.str);
 	});
+
+	test('byteArrayToHexStr', () => {
+		expect(Util.byteArrayToHexStr(testData.bytes)).toStrictEqual(testData.hexStr);
+	});
 });

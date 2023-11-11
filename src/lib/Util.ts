@@ -15,6 +15,14 @@ export const Util = {
 		return result;
 	},
 
+	byteArrayToHexStr(arr: Uint8Array): string {
+		let res = '';
+		for (let i = 0; i < arr.length; i++) {
+			res += arr[i].toString(16);
+		}
+		return res;
+	},
+
 	byteArrayToString(arr: Uint8Array): string {
 		let result = '';
 

@@ -5,32 +5,52 @@
 
 	import Data from '$lib/components/Data.svelte';
 	import DataInput from '$lib/components/DataInput.svelte';
+	import { Xor } from '$lib/Xor';
 
-	const chalStr = challenges.set_1.challenge_1.inStr;
-	let value = chalStr;
+	const hexStr1 = challenges.set_1.challenge_2.arr;
+	const hexStr2 = challenges.set_1.challenge_2.key;
 
-	$: hexStr = Util.strToHexStr(value);
-	$: byteArr = Util.hexStrToByteArray(hexStr);
-	$: cipherArr = Base64.encode(byteArr);
+	const bytes1 = Util.hexStrToByteArray(hexStr1);
+	const bytes2 = Util.hexStrToByteArray(hexStr2);
+
+	const resBytes = Xor.fixed(bytes1, bytes2);
+	const resStr = Util.byteArrayToHexStr(resBytes);
 </script>
 
-<div class="container h-full mx-auto flex flex-col mt-10 items-center space-y-4">
-	<h1 class="h1">Set 1 Challenge 2</h1>
+<h1 class="h1">Set 1 Challenge 2</h1>
 
-	<div class="card w-4/6 space-y-4 p-6">
-		<p>Plain String</p>
-		<DataInput bind:value on:reset={() => (value = chalStr)} />
+<div class="w-4/6 space-y-4 p-6">
+	<Data>
+		<span slot="head">Hex String 1</span>
+		<span slot="content"> {hexStr1}</span>
+	</Data>
 
-		<p>Hex String</p>
-		<Data>{hexStr}</Data>
+	<Data>
+		<span slot="head">to bytes</span>
+		<span slot="content"> {Util.prettyPrintArr(bytes1)}</span>
+	</Data>
 
-		<p>Convert to byte array</p>
-		<Data>{Util.prettyPrintArr(byteArr)}</Data>
+	<Data>
+		<span slot="head">Hex String 2</span>
+		<span slot="content"> {hexStr2}</span>
+	</Data>
 
-		<p>Encode Base64</p>
-		<Data>{Util.prettyPrintArr(cipherArr)}</Data>
+	<Data>
+		<span slot="head">to bytes</span>
+		<span slot="content">{Util.prettyPrintArr(bytes2)}</span>
+	</Data>
 
-		<p>Print string</p>
-		<Data>{Util.byteArrayToString(cipherArr)}</Data>
-	</div>
+	<Data>
+		<span slot="head">Result Bytes</span>
+		<span slot="content">{Util.prettyPrintArr(resBytes)}</span>
+	</Data>
+	<Data>
+		<span slot="head">Result Ascii</span>
+		<span slot="content">{Util.byteArrayToString(resBytes)}</span>
+	</Data>
+
+	<Data>
+		<span slot="head">Hex Encoded</span>
+		<span slot="content">{resStr}</span>
+	</Data>
 </div>
